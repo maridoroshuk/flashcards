@@ -2,17 +2,18 @@ import React from "react";
 import FlashCardItem from "./FlashCardItem";
 import styles from "./FlashCardsList.module.css";
 
-function FlashCardsList() {
+function FlashCardsList({flashcardlist}) {
+
   return (
     <ul className={styles.list}>
-      {FlashCardsList.map((card) => {
+      {flashcardlist.map((card) => (
         <FlashCardItem
           key={card.id}
           id={card.id}
           title={card.title}
           details={card.details}
-        />;
-      })}
+        />
+      ))}
     </ul>
   );
 }

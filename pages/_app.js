@@ -1,12 +1,29 @@
+import { SessionProvider } from "next-auth/react";
+import { Html } from "next/document";
+import Head from "next/head";
 import Layout from "../components/layout/Layout";
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps: { session, ...pageProps } }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kanit&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body>
+        <SessionProvider session={session}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SessionProvider>
+      </body>
+    </>
   );
 }
 
-export default MyApp;
+export default App;
