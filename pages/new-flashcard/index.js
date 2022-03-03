@@ -12,7 +12,7 @@ function NewFlashcardPage() {
       body: JSON.stringify(enteredData),
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        'Accept': "application/json",
       },
     });
     const data = await response.json();
@@ -24,7 +24,7 @@ function NewFlashcardPage() {
       <Head>
         <title>FlashCard</title>
       </Head>
-      <NewFlashCardForm onAddWord={onAddWordHandler}/>
+      <NewFlashCardForm onAddWord={onAddWordHandler} />
     </>
   );
 }

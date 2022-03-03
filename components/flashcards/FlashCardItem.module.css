@@ -1,14 +1,14 @@
 .item {
     margin: 1rem;
     width: 20%;
-    font-family: 'Permanent Marker', cursive;
-
+    font-family: 'Indie Flower', cursive;
   }
 
   .content {
     text-align: center;
+    vertical-align: baseline;
     padding: 1rem;
-    max-height: 8rem;
+    min-height: 7rem;
     cursor: pointer;
   }
   

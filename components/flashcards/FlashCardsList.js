@@ -10,7 +10,7 @@ function FlashCardsList({flashcardlist}) {
         <FlashCardItem
           key={card.id}
           id={card.id}
-          title={card.title}
+          word={card.word}
           details={card.details}
         />
       ))}
