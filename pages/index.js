@@ -1,24 +1,51 @@
-import { MongoClient } from 'mongodb';
-import FlashCardsList from '../components/flashcards/FlashCardsList'
-import styles from '../styles/Home.module.css'
+import { MongoClient } from "mongodb";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const DUMMY_FLASHCARDS = [
- {id: 'f1', word: 'pupil', details: 'a person, especially a child at school, who is being taught'},
- {id: 'f2', word: 'impact', details: 'an effect or result'},
- {id: 'f3', word: 'unconscious', details: 'information processing of which we are unaware'},
- {id: 'f4', word: 'unconscious', details: 'information processing of which we are unaware'},
- {id: 'f5', word: 'unconscious', details: 'information processing of which we are unaware'},
- {id: 'f6', word: 'accuracy', details: 'the fact of being exact or correct'},
- {id: 'f7', word: 'accuracy', details: 'the fact of being exact or correct'},
- {id: 'f8', word: 'accuracy', details: 'the fact of being exact or correct'},
-]
+  {
+    id: "f1",
+    word: "pupil",
+    details: "a person, especially a child at school, who is being taught",
+  },
+  { id: "f2", word: "impact", details: "an effect or result" },
+  {
+    id: "f3",
+    word: "unconscious",
+    details: "information processing of which we are unaware",
+  },
+  {
+    id: "f4",
+    word: "unconscious",
+    details: "information processing of which we are unaware",
+  },
+  {
+    id: "f5",
+    word: "unconscious",
+    details: "information processing of which we are unaware",
+  },
+  { id: "f6", word: "accuracy", details: "the fact of being exact or correct" },
+  { id: "f7", word: "accuracy", details: "the fact of being exact or correct" },
+  { id: "f8", word: "accuracy", details: "the fact of being exact or correct" },
+];
 
+function Home({ flashcards }) {
+  const [session, loading] = useSession();
 
-function Home({flashcards}) {
-  console.log(flashcards)
+  if (session) {
+    return (
+      <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => signOut()}>Sign out</button>
+      </>
+    );
+  }
   return (
-    <FlashCardsList flashcardlist={DUMMY_FLASHCARDS}/>
-  )
+    <>
+      Not signed in <br />
+      <button onClick={() => signIn()}>Sign in</button>
+    </>
+  );
+  // return <FlashCardsList flashcardlist={DUMMY_FLASHCARDS} />;
 }
 
 // export async function getStaticPath() {
@@ -39,7 +66,6 @@ function Home({flashcards}) {
 //     fallback: 'clocking'
 //   }
 // }
-
 
 export async function getStaticProps() {
   const client = MongoClient.connect(

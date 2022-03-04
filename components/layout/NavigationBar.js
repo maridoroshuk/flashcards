@@ -17,7 +17,7 @@ function NavigationBar() {
                         <Link href='/new-flashcard'>Add Card</Link>
                     </li>
                     <li>
-                        <Link href='/authentication'>Login</Link>
+                        <Link href='/api/auth'>Login</Link>
                     </li>
                 </ul>
             </nav>
