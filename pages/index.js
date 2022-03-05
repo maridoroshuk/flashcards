@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 
 const DUMMY_FLASHCARDS = [
   {
@@ -29,23 +30,28 @@ const DUMMY_FLASHCARDS = [
 ];
 
 function Home({ flashcards }) {
-  const [session, loading] = useSession();
+  const { data: session } = useSession();
 
-  if (session) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
-    );
-  }
   return (
     <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
+      {!session && (
+        <>
+          Not signed in <br />
+          <button onClick={() => signIn()}>Sign in</button>
+        </>
+      )}
+
+      {session && (
+        <>
+          Signed in as {session.user.email} <br />
+          <button>
+            <Link href="/secret">To the content</Link>
+          </button>
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      )}
     </>
   );
-  // return <FlashCardsList flashcardlist={DUMMY_FLASHCARDS} />;
 }
 
 // export async function getStaticPath() {
