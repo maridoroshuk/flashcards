@@ -2,11 +2,11 @@ import React from "react";
 import FlashCardItem from "./FlashCardItem";
 import styles from "./FlashCardsList.module.css";
 
-function FlashCardsList({flashcardlist}) {
+function FlashCardsList({flashcards}) {
 
   return (
     <ul className={styles.list}>
-      {flashcardlist.map((card) => (
+      {flashcards.map((card) => (
         <FlashCardItem
           key={card.id}
           id={card.id}

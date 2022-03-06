@@ -1,22 +1,23 @@
 import { MongoClient } from "mongodb";
 
 async function handler(req, res) {
-  if (req.method === "POST") {
+  if (req.method === 'POST') {
     const data = req.body;
 
-    const client = MongoClient.connect(
-      "mongodb+srv://someuser:v7eg6yARvwyTPZMc@cluster0.ksdtr.mongodb.net/flashcards?retryWrites=true&w=majority"
+    const client = await MongoClient.connect(
+      'mongodb+srv://someuser:RO4VY0IbXfKDd6OW@cluster0.ksdtr.mongodb.net/flashcards?retryWrites=true&w=majority'
     );
+    const db = client.db();
 
-    const db = (await client).db();
+    const flashcardsCollection = db.collection('meetups');
 
-    const flashcardsConnection = db.collection("flashcards");
+    const result = await flashcardsCollection.insertOne(data);
 
-    const result = flashcardsConnection.insertOne(data);
+    console.log(result);
 
-    (await client).close;
+    client.close();
 
-    res.status(201).json({ message: "Flashcard inserted" });
+    res.status(201).json({ message: 'Flashcard inserted!' });
   }
 }
 

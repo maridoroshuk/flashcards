@@ -1,10 +1,8 @@
-import { SessionProvider } from "next-auth/react";
-import { Html } from "next/document";
 import Head from "next/head";
 import Layout from "../components/layout/Layout";
 import "../styles/globals.css";
 
-function App({ Component, pageProps: { session, ...pageProps } }) {
+function App({ Component, pageProps: {...pageProps } }) {
   return (
     <>
       <Head>
@@ -16,11 +14,9 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
         />
       </Head>
       <body>
-        <SessionProvider session={session}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </SessionProvider>
       </body>
     </>
   );

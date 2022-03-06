@@ -6,26 +6,29 @@ import NewFlashCardForm from "../../components/flashcards/NewFlashCardForm";
 function NewFlashcardPage() {
   const router = useRouter();
 
-  async function onAddWordHandler(enteredData) {
-    const response = await fetch("/api/new-flashcard", {
-      method: "POST",
-      body: JSON.stringify(enteredData),
-      headers: {
-        "Content-Type": "application/json",
-        'Accept': "application/json",
-      },
-    });
-    const data = await response.json();
+  async function onAddWordHandler (enteredData) {
+      const response = await fetch('/api/new-flashcard', {
+        method: 'POST',
+        body: JSON.stringify(enteredData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
 
-    router.push("/");
-  }
+      const data = await response.json()
+
+
+      router.push('/')
+  };
+
   return (
-    <>
-      <Head>
-        <title>FlashCard</title>
-      </Head>
-      <NewFlashCardForm onAddWord={onAddWordHandler} />
-    </>
+  <>
+  <Head>
+    <title>FlashCard</title>
+  </Head>
+  <NewFlashCardForm onAddWord={onAddWordHandler} />
+  </>
   );
 }
 

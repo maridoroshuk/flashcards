@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
+import React from "react";
+import FlashCardsList from "../components/flashcards/FlashCardsList";
 
 const DUMMY_FLASHCARDS = [
   {
@@ -30,64 +30,27 @@ const DUMMY_FLASHCARDS = [
 ];
 
 function Home({ flashcards }) {
-  const { data: session } = useSession();
-
-  return (
-    <>
-      {!session && (
-        <>
-          Not signed in <br />
-          <button onClick={() => signIn()}>Sign in</button>
-        </>
-      )}
-
-      {session && (
-        <>
-          Signed in as {session.user.email} <br />
-          <button>
-            <Link href="/secret">To the content</Link>
-          </button>
-          <button onClick={() => signOut()}>Sign out</button>
-        </>
-      )}
-    </>
-  );
+  console.log(flashcards);
+  return <FlashCardsList flashcards={flashcards} />;
 }
 
-// export async function getStaticPath() {
-//   const client = MongoClient.connect(
-//     "mongodb+srv://someuser:v7eg6yARvwyTPZMc@cluster0.ksdtr.mongodb.net/flashcards?retryWrites=true&w=majority"
-//   );
-//   const db = (await client).db();
-
-//   const flashcardsCollections = db.collection("flashcard");
-
-//   const flashcards = await flashcardsCollections.find().toArray();
-//   (await client).close();
-
-//   return {
-//     paths: flashcards.map((card) => ({
-//       params: {cardId: card._id.toString() }
-//     })),
-//     fallback: 'clocking'
-//   }
-// }
-
 export async function getStaticProps() {
-  const client = MongoClient.connect(
-    "mongodb+srv://someuser:v7eg6yARvwyTPZMc@cluster0.ksdtr.mongodb.net/flashcards?retryWrites=true&w=majority"
+  // fetch data from an API
+  const client = await MongoClient.connect(
+    "mongodb+srv://someuser:RO4VY0IbXfKDd6OW@cluster0.ksdtr.mongodb.net/flashcards?retryWrites=true&w=majority"
   );
-  const db = (await client).db();
+  const db = client.db();
 
-  const flashcardsCollections = db.collection("flashcard");
+  const flashcardsCollections = db.collection("meetups");
 
   const flashcards = await flashcardsCollections.find().toArray();
-  (await client).close();
+
+  client.close();
 
   return {
     props: {
       flashcards: flashcards.map((card) => ({
-        title: card.title,
+        word: card.word,
         details: card.details,
         id: card._id.toString(),
       })),
