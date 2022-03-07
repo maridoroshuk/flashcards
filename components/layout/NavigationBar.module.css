@@ -8,7 +8,7 @@
     padding: 0 10%;
   }
   
-  .logo {
+  .logo a{
     font-size: 2rem;
     color: #F1E3E4;
     font-weight: bold;
@@ -26,9 +26,9 @@
     margin-left: 3rem;
   }
   
-  .header a {
+  .header nav a {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #BB9BB0;
   }
   

@@ -9,7 +9,7 @@ async function handler(req, res) {
     );
     const db = client.db();
 
-    const flashcardsCollection = db.collection('meetups');
+    const flashcardsCollection = db.collection('flashcards');
 
     const result = await flashcardsCollection.insertOne(data);
 

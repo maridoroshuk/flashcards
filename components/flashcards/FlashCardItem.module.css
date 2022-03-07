@@ -17,3 +17,9 @@
     color: #2c292b;
   }
   
+  @media screen and (max-width: 800px) {
+    .item {
+      width: 80%;
+    }
+  }
+  
