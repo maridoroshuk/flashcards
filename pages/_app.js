@@ -16,7 +16,9 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
       </Head>
       <body>
         <SessionProvider session={session}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </SessionProvider>
       </body>
     </>

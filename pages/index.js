@@ -2,7 +2,6 @@ import { MongoClient } from "mongodb";
 import React from "react";
 import FlashCardsList from "../components/flashcards/FlashCardsList";
 import { signIn, useSession } from "next-auth/react";
-import Layout from "../components/layout/Layout";
 
 function Home({ flashcards }) {
   const { data: session, status } = useSession();
@@ -10,9 +9,7 @@ function Home({ flashcards }) {
   if (status === "authenticated") {
     return (
       <>
-        <Layout>
           <FlashCardsList flashcards={flashcards} />
-        </Layout>
       </>
     );
   }
