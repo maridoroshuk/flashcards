@@ -8,7 +8,7 @@
     text-align: center;
     vertical-align: baseline;
     padding: 1rem;
-    min-height: 8rem;
+    min-height: 7.5rem;
     cursor: pointer;
     position: relative;
   }
@@ -19,16 +19,24 @@
   }
 
   .tag {
-    background-color: #BB9BB0;
     color: #fff;
-    border: 2px solid #BB9BB0;
     border-radius: 10px;
-    width: 5rem;
+    width: 4rem;
     font-family: "Kanit", sans-serif;
+    font-size: 0.8rem;
     cursor: pointer;
     position: absolute;
     right: .5rem;
     bottom: 0;
+  }
+  .learn {
+    background-color: #645986;
+    border: 2px solid #645986;
+
+  }
+  .repeat {
+    background-color: #8FE388;
+    border: 2px solid #8FE388;
   }
   
   @media screen and (max-width: 800px) {

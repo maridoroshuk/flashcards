@@ -11,17 +11,13 @@ function FlashCardItem({ id, word, details, tag, onCardsFilter }) {
     setIsFlipped(!isFlipped);
   };
 
-  const filterByTagHandler = (e) => {
-    onCardsFilter(e.target.innerText)
-  }
-
   return (
     <li className={styles.item}>
       <ReactCardFlip isFlipped={isFlipped} flipDirection='horizontal'>
         <Card>
           <div onClick={cardClickHandler} className={styles.content}>
             <h3>{word}</h3>
-            <p className={styles.tag} onClick={filterByTagHandler}>{tag}</p>
+            <p className={(tag === 'learn') ? `${styles.tag} ${styles.learn}` : `${styles.tag} ${styles.repeat}`}>{tag}</p>
           </div>
         </Card>
         <Card>

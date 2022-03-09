@@ -1,9 +1,33 @@
 .list {
-    list-style: none;
-    margin: 2rem;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
+  list-style: none;
+  margin: 1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter span {
+  background-color: #bb9bb0;
+  color: #fff;
+  border: 2px solid #bb9bb0;
+  border-radius: 10px;
+  width: 5rem;
+  font-family: "Kanit", sans-serif;
+  cursor: pointer;
+  margin: 1rem;
+  padding: 0.2rem;
+  text-align: center;
+}
+.active {
+  color: #bb9bb0;
+  background-color: #fff;
+  border: 2px solid #bb9bb0;
+
+}
+.filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
