@@ -8,13 +8,27 @@
     text-align: center;
     vertical-align: baseline;
     padding: 1rem;
-    min-height: 7rem;
+    min-height: 8rem;
     cursor: pointer;
+    position: relative;
   }
   
   .content h3 {
     font-size: 1.25rem;
     color: #2c292b;
+  }
+
+  .tag {
+    background-color: #BB9BB0;
+    color: #fff;
+    border: 2px solid #BB9BB0;
+    border-radius: 10px;
+    width: 5rem;
+    font-family: "Kanit", sans-serif;
+    cursor: pointer;
+    position: absolute;
+    right: .5rem;
+    bottom: 0;
   }
   
   @media screen and (max-width: 800px) {

@@ -2,6 +2,7 @@ import { MongoClient } from "mongodb";
 import React from "react";
 import FlashCardsList from "../components/flashcards/FlashCardsList";
 import { signIn, useSession } from "next-auth/react";
+import styles from './Home.module.css'
 
 function Home({ flashcards }) {
   const { data: session, status } = useSession();
@@ -13,7 +14,10 @@ function Home({ flashcards }) {
       </>
     );
   }
-  return <button onClick={signIn}>Sign In</button>;
+  return <div className={styles.signin}>
+    <h1>Please sign in to see the content</h1>
+  <button  onClick={signIn}>Sign In</button>
+  </div>
 }
 
 export async function getStaticProps() {
@@ -34,6 +38,7 @@ export async function getStaticProps() {
       flashcards: flashcards.map((card) => ({
         word: card.word,
         details: card.details,
+        tag: card.tag,
         id: card._id.toString(),
       })),
     },

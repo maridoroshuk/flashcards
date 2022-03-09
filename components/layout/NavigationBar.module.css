@@ -31,6 +31,23 @@
     font-size: 1.2rem;
     color: #BB9BB0;
   }
+
+  .header nav button {
+    text-decoration: none;
+    font-size: 1.2rem;
+    background-color: #BB9BB0;
+    color: #fff;
+    border: 2px solid #BB9BB0;
+    border-radius: 10px;
+    padding: .5rem;
+    font-family: "Kanit", sans-serif;
+    cursor: pointer;
+  }
+  
+  .header nav button:hover {
+    color: #BB9BB0;
+    background-color: transparent;
+  }
   
   .header a:hover,
   .header a:active,

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./NavigationBar.module.css";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import {signOut, useSession } from "next-auth/react";
 
 function NavigationBar() {
   const { data: session, status } = useSession();
@@ -23,7 +23,7 @@ function NavigationBar() {
                 <Link href="/new-flashcard">Create</Link>
               </li>
               <li>
-                <Link href="/api/auth">Login</Link>
+                <button onClick={signOut}>Sign Out</button>
               </li>
             </ul>
           </nav>

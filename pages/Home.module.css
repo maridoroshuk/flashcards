@@ -1,0 +1,20 @@
+.signin {
+  text-align: center;
+}
+.signin button {
+    text-decoration: none;
+    font-size: 1.2rem;
+    background-color: #bb9bb0;
+    color: #fff;
+    border: 2px solid #bb9bb0;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 15rem;
+    font-family: "Kanit", sans-serif;
+    cursor: pointer;
+  }
+  .signin button:hover {
+    color: #bb9bb0;
+    background-color: transparent;
+  }
+  

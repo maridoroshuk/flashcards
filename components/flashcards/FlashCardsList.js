@@ -4,6 +4,9 @@ import styles from "./FlashCardsList.module.css";
 
 function FlashCardsList({flashcards}) {
 
+  const onCardsFilter = (filter) => {
+    console.log(filter)
+  }
   return (
     <ul className={styles.list}>
       {flashcards.map((card) => (
@@ -12,6 +15,8 @@ function FlashCardsList({flashcards}) {
           id={card.id}
           word={card.word}
           details={card.details}
+          tag={card.tag}
+          onCardsFilter={onCardsFilter}
         />
       ))}
     </ul>
