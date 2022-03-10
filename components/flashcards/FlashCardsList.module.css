@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.filter span {
+.filter {
   background-color: #bb9bb0;
   color: #fff;
   border: 2px solid #bb9bb0;
@@ -26,7 +26,7 @@
   border: 2px solid #bb9bb0;
 
 }
-.filter {
+.filterButtons {
   display: flex;
   justify-content: center;
   align-items: center;

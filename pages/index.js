@@ -1,16 +1,22 @@
 import { MongoClient } from "mongodb";
-import React from "react";
+import React, { useEffect } from "react";
 import FlashCardsList from "../components/flashcards/FlashCardsList";
 import { signIn, useSession } from "next-auth/react";
 import styles from './Home.module.css'
+import { useDispatch } from "react-redux";
+import { cardsAction } from "../features/cards/cards-slice";
 
 function Home({ flashcards }) {
+  const dispatch = useDispatch();
   const { data: session, status } = useSession();
 
+  useEffect(() => {
+    dispatch(cardsAction.setFlashcards(flashcards))
+  },[])
   if (status === "authenticated") {
     return (
       <>
-          <FlashCardsList flashcards={flashcards} />
+          <FlashCardsList/>
       </>
     );
   }
