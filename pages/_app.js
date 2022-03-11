@@ -1,5 +1,7 @@
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import { Provider } from "react-redux";
 import Layout from "../components/layout/Layout";
 import store from "../store";
@@ -18,11 +20,13 @@ function App({ Component, pageProps: { session, ...pageProps } }) {
       </Head>
       <body>
         <SessionProvider session={session}>
+        <DndProvider backend={HTML5Backend}>
           <Provider store={store}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
           </Provider>
+          </DndProvider>
         </SessionProvider>
       </body>
     </>
